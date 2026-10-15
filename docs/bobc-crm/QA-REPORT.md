@@ -42,6 +42,10 @@ El núcleo web incorpora las correcciones P0 documentadas en [QA-P0-2026-10-14.m
 
 ## Entrega y reproducción
 
+[Descargar APK directamente](https://github.com/jcarlospm05/BOBC-CRM/releases/download/v0.4.1/BOBC-CRM-0.4.1-debug.apk). Publicado como versión de pruebas [v0.4.1](https://github.com/jcarlospm05/BOBC-CRM/releases/tag/v0.4.1).
+
+SHA-256 del APK individual: `7c6d7891266f7e922bae28768d3b6903760327be917d86fd8fbdb50d4a6ad30b`. La [publicación 38666083366](https://github.com/jcarlospm05/BOBC-CRM/actions/runs/38666083366) comprobó la ejecución de origen, el commit compilado y el checksum del archivo antes de adjuntarlo a la versión.
+
 [Descargar APK de pruebas (ZIP)](https://github.com/jcarlospm05/BOBC-CRM/actions/runs/38664838490/artifacts/11940925255).
 
 El ZIP contiene el APK firmado, su archivo SHA-256 y BUILD-INFO.txt con el commit compilado. SHA-256 del ZIP publicado por GitHub: `589f0c1f840c3a15b43230fdf9289766604c96761c09432bb8f7ae4a010a7eff`. Esta huella corresponde al ZIP, no al APK individual.

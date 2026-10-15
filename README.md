@@ -2,6 +2,12 @@
 
 Repositorio independiente del CRM de BOBC SOFTWARE, separado de BOBC Artesanía por petición del usuario. El código web incorpora las correcciones P0 de respaldos v1/v2, migración aditiva, validación de referencias, formularios y exportación CSV.
 
+## Descargar APK
+
+[BOBC CRM 0.4.1 — APK de pruebas para Android 8+](https://github.com/jcarlospm05/BOBC-CRM/releases/download/v0.4.1/BOBC-CRM-0.4.1-debug.apk).
+
+Compilación, Android Lint y firma verificados; 298 pruebas unitarias y 25 pruebas de navegador aprobadas. Las pruebas en un dispositivo Android real siguen pendientes. Consulte [el informe QA](docs/bobc-crm/QA-REPORT.md) y conserve un respaldo JSON para transferir datos desde la web.
+
 ## Contenido
 
 - `docs/bobc-crm/`: aplicación HTML/CSS/JavaScript y JSON. IndexedDB bobc-crm, versión 2, 96 entidades y 115 referencias.
