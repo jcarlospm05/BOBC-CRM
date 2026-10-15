@@ -1,37 +1,54 @@
 # QA-REPORT — BOBC CRM independiente 0.4.1
 
-Fecha: 2026-10-15 UTC. Rama local: main. Repositorio remoto solicitado: BOBC-CRM, todavía pendiente de creación por el usuario.
+Fecha: 2026-10-15 UTC. Repositorio: [jcarlospm05/BOBC-CRM](https://github.com/jcarlospm05/BOBC-CRM), rama main.
 
-El código web procede de jcarlospm05/Sistema-Artesanal-Android, commit 309278c9081dcf3aef672c7128f862f46555394b, más las correcciones P0 preparadas. El usuario autoriza expresamente aplicarlas pese a la auditoría de navegador pendiente y solicita un APK de CRM en un repositorio separado. BOBC Artesanía no se modifica.
+**Código compilado y probado:** `5b6beeb869b0c51c75e12ed99743fde0acefa354`.  
+**Ejecución final:** [38664838490](https://github.com/jcarlospm05/BOBC-CRM/actions/runs/38664838490), completada con **success**.  
+**Decisión:** **APTO para entregar el APK de pruebas**. No se certifican uso productivo, reglas financieras ni funcionamiento en un dispositivo Android real.
 
-## Resultado real
+## Resultado ejecutado
 
-- 298 pruebas unitarias ejecutadas en Node: 298 aprobadas, 0 fallidas.
-- Sintaxis de 13 archivos JS/MJS, runner Python, script Bash y estructura XML verificadas. Workflow YAML validado con parser.
-- El nuevo adaptador de descarga se prueba con dobles explícitos de FileReader, DOM y callback nativo; esos casos no acreditan Android SAF.
-- Chromium/IndexedDB: la ejecución local previa se bloqueó al iniciar Chromium por setsockopt EPERM. No se ejecutaron los casos de navegador.
-- Compilación Android: NO EJECUTADA. El entorno tiene Java runtime, pero no javac, Gradle ni Android SDK; la conexión CLI tampoco está disponible.
-- Android Lint, verificación de firma de APK y pruebas en un dispositivo: NO EJECUTADOS.
-- Repositorio remoto, workflow y APK: PREPARADOS, todavía no publicados ni compilados.
+| Verificación | Resultado | Evidencia |
+|---|---|---|
+| Validaciones JavaScript | 298 ejecutadas, 298 aprobadas, 0 fallidas | Job 116194267034; artefacto BOBC-CRM-unit-QA |
+| Chromium e IndexedDB reales | 25 ejecutadas, 25 aprobadas, 0 fallidas | Job 116194267355; artefacto BOBC-CRM-browser-QA |
+| Assets CRM y assembleDebug | BUILD SUCCESSFUL | Job 116194303829 |
+| Android Lint | lintDebug completado correctamente | Mismo job |
+| Firma instalable | apksigner: Verifies; esquema v2 true | Mismo job |
+| Archivo entregable | BOBC-CRM-0.4.1-debug.apk, checksum y BUILD-INFO.txt | Artefacto APK 11940925255 |
+| Dispositivo Android y selector SAF real | NO EJECUTADO | Pendiente de prueba manual |
+| URL web de Pages independiente | NO EJECUTADO | El workflow de navegador usa --skip-public; no se configura hosting web |
 
-No existe todavía un APK instalable generado por esta entrega. No se declara aptitud de producción ni porcentaje de cobertura global. La autorización para continuar no convierte las pruebas pendientes en aprobadas.
+Los resultados locales previos no se confunden con la ejecución remota. El bloqueo local setsockopt EPERM quedó registrado en la auditoría histórica, pero las pruebas de navegador sí se ejecutaron posteriormente en GitHub Actions.
 
-## Cambios de esta etapa
+## Cobertura funcional real
 
-1. Proyecto local separado en /workspace/BOBC-CRM, con rama main.
-2. Contenedor Android Java independiente: applicationId com.bobc.crm, versión 0.4.1 (401), Android 8.0 o posterior.
-3. Assets web locales servidos por WebView desde un origen HTTPS propio, sin servidor ni PWA. No se empaquetan tests, informes ni datos reales.
-4. Exportación JSON/CSV mediante ACTION_CREATE_DOCUMENT y restauración mediante ACTION_OPEN_DOCUMENT; sin permisos generales de almacenamiento. Guardado y cancelación se diferencian en la interfaz.
-5. Puente limitado al documento local, MIME JSON/CSV, filename controlado, requestId y tamaño máximo de 32 MiB. Se bloquean recursos externos y navegación dentro del WebView fuera del documento permitido.
-6. Compilación fijada a JDK 17, Gradle 8.9, Android plugin 8.7.3, SDK y build-tools 35. Gradle descargado se verifica con SHA-256 oficial.
-7. Workflow independiente con unidades, navegador y compilación APK. El job APK exige unidades aprobadas; el estado del navegador se comunica por separado.
-8. El script exige assembleDebug y lintDebug correctos, verifica el APK con apksigner y genera checksum antes de entregar el artefacto.
+Las pruebas de navegador comprueban BD nueva con 96 almacenes e índices; migración aditiva 1→2 conservando contenido e índices de los 51 originales; las 115 referencias; rechazo atómico de FK inválidas; actualización/baja protegida; referencias polimórficas y compatibilidad entre padres; cierre y reapertura; bloqueo y versionchange entre dos páginas.
 
-## Evidencias y reproducción
+También comprueban exportación consistente; v2→base limpia con comparación de IDs/contenido; respaldo original v1 de 51 tablas y v1 transicional de 96; preservación de campos históricos; rechazo de archivos inválidos; protección de módulos ocupados ante un original51; exportación de recuperación y rollback tras un fallo de escritura.
 
-Resultados actuales: tests/results/node-qa.json. Evidencias históricas de P0: QA-P0-2026-10-14.md, tests/results/p0-node-qa.json y tests/results/browser-qa.json.
+Los recorridos UI cubren cinco pestañas, ocho áreas, 37 formularios genéricos, búsqueda/conversión de Relaciones, altas vinculadas, descarga/importación JSON, CSV y persistencia. Pixel 7, iPhone 13 y escritorio son **emulaciones de viewport en Chromium**, no dispositivos reales ni Safari.
 
-Desde la raíz:
+Las 298 unidades incluyen validadores y el adaptador JS de descarga con dobles explícitos de FileReader/DOM/callback. Ese adaptador simulado no certifica el selector de documentos Android.
+
+## Hallazgos resueltos durante CI
+
+- Primera ejecución: el instalador Android solicitaba el paquete obsoleto tools. Se configuró platform-tools y después SDK/build-tools 35.
+- Segunda ejecución: el caso de migración falló por una conexión de pruebas todavía ocupada. Las comprobaciones de índices no esperaban a que sus transacciones finalizaran antes de cerrar y borrar la BD. Se corrigió la limpieza sin eliminar ninguna comprobación de migración o de bloqueo.
+- El informe de navegador identificaba un SHA histórico fijo. Ahora utiliza GITHUB_SHA para el código de CI y conserva el SHA original por separado.
+- La última ejecución pasó todos los jobs. No se presentan los intentos anteriores fallidos como aprobados.
+
+El núcleo web incorpora las correcciones P0 documentadas en [QA-P0-2026-10-14.md](QA-P0-2026-10-14.md). Se mantienen bobc-crm, versión 2, 96 entidades, 115 referencias y migraciones aditivas.
+
+## Entrega y reproducción
+
+[Descargar APK de pruebas (ZIP)](https://github.com/jcarlospm05/BOBC-CRM/actions/runs/38664838490/artifacts/11940925255).
+
+El ZIP contiene el APK firmado, su archivo SHA-256 y BUILD-INFO.txt con el commit compilado. SHA-256 del ZIP publicado por GitHub: `589f0c1f840c3a15b43230fdf9289766604c96761c09432bb8f7ae4a010a7eff`. Esta huella corresponde al ZIP, no al APK individual.
+
+Artefactos de [unidades](https://github.com/jcarlospm05/BOBC-CRM/actions/runs/38664838490/artifacts/11940666656) y [navegador](https://github.com/jcarlospm05/BOBC-CRM/actions/runs/38664838490/artifacts/11940288246). El workflow y los artefactos identifican el código probado; los JSON históricos de tests/results se conservan como evidencia anterior.
+
+Desde la raíz, con las herramientas indicadas en README:
 
 ```sh
 node docs/bobc-crm/tests/node-tests.mjs --json /tmp/bobc-crm-node-qa.json
@@ -39,18 +56,16 @@ python docs/bobc-crm/tests/run_browser_tests.py --json /tmp/bobc-crm-browser-qa.
 bash scripts/build-apk.sh
 ```
 
-Los dos últimos requieren un entorno que permita iniciar Chromium y/o tenga las herramientas Android indicadas. GitHub Actions los prepara cuando se publique el repositorio. BUILD-INFO.txt identifica el commit realmente compilado; no se sustituye esa identificación por el SHA del proyecto de Artesanía.
+## Android, datos y límites
 
-## Alcance y datos
+La aplicación independiente es com.bobc.crm, versión 0.4.1 (401), para Android 8.0 o posterior con WebView actualizado. Contiene assets locales; no es una PWA, no instala un servidor y no incorpora BOBC Artesanía. No se empaquetan pruebas, informes ni datos reales.
 
-Se mantienen IndexedDB bobc-crm, versión 2, 96 entidades, 115 referencias y las migraciones aditivas. Las limitaciones de los módulos genéricos y de las reglas financieras de la auditoría anterior permanecen vigentes.
+Exportar JSON/CSV utiliza ACTION_CREATE_DOCUMENT; restaurar JSON utiliza ACTION_OPEN_DOCUMENT. Se controlan MIME, nombre, tamaño de 32 MiB y requestId; cancelar el destino no se anuncia como guardado correcto. Esas operaciones requieren comprobación en Android real.
 
-La base del APK y la del navegador son independientes. Transferir datos requiere un JSON exportado por el usuario. Restaurar reemplaza los registros locales tras confirmación y validación; no se han acreditado aún las transacciones reales en esta entrega.
+El APK y el navegador usan espacios de almacenamiento diferentes. Para transferir datos se debe conservar un JSON de la web e importarlo en el APK. Desinstalar o borrar datos de Android elimina el almacén local.
 
-El APK de pruebas se firma con la clave debug del entorno de compilación. Para actualizar una instalación sin desinstalarla se requiere conservar la misma clave; una distribución estable necesita una firma propia fuera del repositorio. No hay claves ni credenciales en Git.
+La firma debug es de pruebas. Para actualizaciones estables sin desinstalación debe conservarse la misma clave en un entorno privado; no hay claves ni credenciales en el repositorio. La distribución de este APK no sustituye configurar una firma release propia.
 
-Antes de considerar el APK validado deben ejecutarse compilación, lint y firma, y probar creación, recarga, cierre/reapertura, exportación, cancelación y restauración en Android. Ninguna prueba simulada sustituye esas comprobaciones.
+Los formularios genéricos no equivalen a CRUD especializado ni a invariantes de pagos, presupuesto o inventario. No hay backend, autenticación ni sincronización multidispositivo. No se declara cobertura global ni porcentaje de calidad.
 
-## Paso pendiente del usuario
-
-Crear un repositorio vacío llamado BOBC-CRM y compartir su URL. La conexión GitHub actual dispone de escritura sobre repositorios existentes, pero no de una operación de creación. Con ese destino se podrá publicar el proyecto y ejecutar la compilación para obtener un APK real.
+BOBC Artesanía permanece en su repositorio anterior. La documentación de esta entrega se publica después de la compilación y referencia explícitamente el commit que generó el APK.

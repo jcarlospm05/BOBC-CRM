@@ -1,0 +1,55 @@
+name: Publicar APK de pruebas verificado
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/publish-apk.yml']
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comprobar la ejecución de origen
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BOBC_REPOSITORY: ${{ github.repository }}
+        run: |
+          conclusion="$(gh api "repos/$BOBC_REPOSITORY/actions/runs/38664838490" --jq '.conclusion')"
+          source_sha="$(gh api "repos/$BOBC_REPOSITORY/actions/runs/38664838490" --jq '.head_sha')"
+          test "$conclusion" = success
+          test "$source_sha" = 5b6beeb869b0c51c75e12ed99743fde0acefa354
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: '38664838490'
+          name: BOBC-CRM-0.4.1-APK-pruebas
+          path: dist
+      - name: Comprobar el APK y publicar
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BOBC_REPOSITORY: ${{ github.repository }}
+        run: |
+          cd dist
+          sha256sum -c BOBC-CRM-0.4.1-debug.apk.sha256
+          grep -F '5b6beeb869b0c51c75e12ed99743fde0acefa354' BUILD-INFO.txt
+          cat > RELEASE-NOTES.md <<'NOTES'
+          APK independiente de BOBC CRM 0.4.1 para Android 8.0 o posterior.
+
+          Edición de pruebas con firma debug. Compilación, Android Lint y firma verificadas; 298 pruebas unitarias y 25 pruebas de Chromium/IndexedDB aprobadas. El selector de documentos y el funcionamiento en Android real quedan pendientes de prueba manual.
+
+          Los datos del APK están separados de los del navegador. Para transferirlos, conserva un respaldo JSON de la web y restáuralo en el APK.
+
+          Código compilado: 5b6beeb869b0c51c75e12ed99743fde0acefa354.
+          NOTES
+          gh release create v0.4.1 \
+            BOBC-CRM-0.4.1-debug.apk BOBC-CRM-0.4.1-debug.apk.sha256 BUILD-INFO.txt \
+            --repo "$BOBC_REPOSITORY" \
+            --target 5b6beeb869b0c51c75e12ed99743fde0acefa354 \
+            --title 'BOBC CRM 0.4.1 - APK de pruebas' \
+            --prerelease --notes-file RELEASE-NOTES.md
