@@ -4,7 +4,14 @@ on:
   push:
     branches: [main]
     paths:
-      - 'docs/bobc-crm/**'
+      - 'docs/bobc-crm/index.html'
+      - 'docs/bobc-crm/css/**'
+      - 'docs/bobc-crm/data/**'
+      - 'docs/bobc-crm/js/**'
+      - 'docs/bobc-crm/tests/*.js'
+      - 'docs/bobc-crm/tests/*.mjs'
+      - 'docs/bobc-crm/tests/*.py'
+      - 'docs/bobc-crm/tests/*.html'
       - 'android/**'
       - 'scripts/**'
       - '.github/workflows/build-crm.yml'
@@ -78,6 +85,9 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools'
+          log-accepted-android-sdk-licenses: 'false'
       - name: Preparar SDK Android
         run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
       - uses: gradle/actions/setup-gradle@v4
