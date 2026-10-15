@@ -17,8 +17,9 @@ from urllib.parse import unquote, urlsplit
 from playwright.sync_api import sync_playwright
 
 PROJECT = Path(__file__).resolve().parents[1]
-SOURCE_COMMIT = "309278c9081dcf3aef672c7128f862f46555394b"
-PUBLIC_URL = "https://jcarlospm05.github.io/Sistema-Artesanal-Android/bobc-crm/"
+BASE_SOURCE_COMMIT = "309278c9081dcf3aef672c7128f862f46555394b"
+SOURCE_COMMIT = os.environ.get("GITHUB_SHA")
+PUBLIC_URL = os.environ.get("BOBC_PUBLIC_URL")
 VIRTUAL_ORIGIN = None
 
 
@@ -205,6 +206,8 @@ def smoke(browser, origin, name, options, artifact_dir):
 
 
 def public_check(playwright, executable):
+    if not PUBLIC_URL:
+        return {"executed": False, "reason": "BOBC_PUBLIC_URL no configurada; la publicación web independiente está pendiente"}
     proxy_url = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
     launch_options = {"headless": True, "executable_path": executable, "args": ["--no-sandbox"]}
     if proxy_url:
@@ -246,7 +249,7 @@ def main():
     if server:
         threading.Thread(target=server.serve_forever, daemon=True).start()
     origin = f"http://127.0.0.1:{server.server_port}" if server else VIRTUAL_ORIGIN
-    report = {"sourceCommit": SOURCE_COMMIT, "testedCode": "local working copy based on sourceCommit", "browser": "Chromium", "realDevicesTested": False, "results": []}
+    report = {"sourceCommit": SOURCE_COMMIT, "baseSourceCommit": BASE_SOURCE_COMMIT, "testedCode": "GitHub Actions checkout" if SOURCE_COMMIT else "local working copy (no CI commit supplied)", "browser": "Chromium", "realDevicesTested": False, "results": []}
     report["transport"] = "stdlib HTTP server" if server else "Playwright local route (no network)"
     try:
         with sync_playwright() as p, tempfile.TemporaryDirectory(prefix="bobc-crm-qa-") as temp_dir:

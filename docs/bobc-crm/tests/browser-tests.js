@@ -124,11 +124,14 @@ const cases = [
     await useDatabase(async db => {
       assert(db.version === 2 && db.objectStoreNames.length === 96, 'Fresh database is not v2/96');
       const tx = db.transaction(tables, 'readonly');
+      const done = transactionFinished(tx);
       for (const t of tables) {
         const store = tx.objectStore(t);
         assert(store.keyPath === 'id', `${t}: wrong keyPath`);
         for (const key of [...Object.keys(schema[t].references || {}), 'created_at', 'updated_at']) assert(store.indexNames.contains(key), `${t}: missing index ${key}`);
       }
+      // close() waits for active transactions; finish this probe before the next erase().
+      await done;
     });
   }],
   ['schema/rejects-mutated-reference-and-field-type', async () => {
@@ -151,10 +154,13 @@ const cases = [
     await useDatabase(async db => {
       const after = await snapshot(db);
       const expected = fixture(Object.keys(base));
+      const tx = db.transaction(Object.keys(base), 'readonly');
+      const done = transactionFinished(tx);
       for (const t of Object.keys(base)) {
         equal(after[t], expected[t], `${t}: legacy records changed`);
-        assert(db.transaction(t).objectStore(t).indexNames.contains('qa_legacy_index'), `${t}: old index removed`);
+        assert(tx.objectStore(t).indexNames.contains('qa_legacy_index'), `${t}: old index removed`);
       }
+      await done;
       for (const t of extensions) equal(after[t], [], `${t}: extension not empty after migration`);
       assert(db.objectStoreNames.length === 96, 'Upgrade did not add 45 stores');
     });
