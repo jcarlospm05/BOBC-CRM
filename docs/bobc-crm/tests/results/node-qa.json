@@ -1,0 +1,1504 @@
+{
+  "startedAt": "2026-10-15T00:20:50.390Z",
+  "completedAt": "2026-10-15T00:20:50.659Z",
+  "runtime": "v24.19.0",
+  "scope": "Pure application validation functions with actual schema files and mocked JS file-download transport; no IndexedDB, browser, UI, Android SAF, network, or deployment tests",
+  "transport": "file-backed mocked fetch; FileReader, DOM download and native save callback doubles; success/error/cancel responses simulated explicitly",
+  "counts": {
+    "executed": 298,
+    "passed": 298,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "schema/load-real-files-through-file-backed-fetch-mock",
+      "passed": true,
+      "durationMs": 7
+    },
+    {
+      "name": "schema/reject-missing-entity-list",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-entity-list-not-array",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-entity-count",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-duplicate-entity-name",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "schema/reject-null-entity",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-invalid-entity-name",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-missing-fields",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-array-fields",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-id-type",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-created-at-type",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-updated-at-type",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-unknown-field-type",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-non-string-field-type",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-invalid-field-name",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-array-references",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-null-references",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "schema/reject-missing-reference-field",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-non-string-reference-field",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-non-string-reference-target",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-invalid-reference-target-field",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-unknown-reference-entity",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-missing-reference-count",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-extra-reference-count",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-mocked-unavailable-source-0",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-mocked-malformed-source-0",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-mocked-rejected-source-0",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-mocked-unavailable-source-1",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-mocked-malformed-source-1",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "schema/reject-mocked-rejected-source-1",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-v2-96-entities",
+      "passed": true,
+      "durationMs": 5
+    },
+    {
+      "name": "backup/accept-legacy-v1-51-entities",
+      "passed": true,
+      "durationMs": 3
+    },
+    {
+      "name": "backup/accept-transitional-v1-96-entities",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/accept-empty-v2-all-tables",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-null",
+      "passed": true,
+      "durationMs": 3
+    },
+    {
+      "name": "backup/reject-array",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-raw-malformed-json-string",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-wrong-format",
+      "passed": true,
+      "durationMs": 3
+    },
+    {
+      "name": "backup/reject-missing-format",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-future-schema-version",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-string-schema-version",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-unsupported-backup-version",
+      "passed": true,
+      "durationMs": 3
+    },
+    {
+      "name": "backup/reject-null-backup-version",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-missing-records",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-null-records",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-array-records",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-unknown-table",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-partial-v2",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-legacy51-marked-v2",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-partial-v1",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-legacy51-wrong-membership",
+      "passed": true,
+      "durationMs": 5
+    },
+    {
+      "name": "backup/reject-non-array-table",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-null-table",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-null-row",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-array-row",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-string-row",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-missing-id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-number-id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-blank-id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-duplicate-id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-fractional-integer",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-unsafe-integer",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-negative-unsafe-integer",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-string-integer",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-nan-integer",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-infinite-integer",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-string-boolean",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-numeric-boolean",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-object-string",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-number-string",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-non-string-date",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-safe-integer--9007199254740991",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-safe-integer--1",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-safe-integer-0",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-safe-integer-1",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/accept-safe-integer-9007199254740991",
+      "passed": true,
+      "durationMs": 4
+    },
+    {
+      "name": "backup/reject-party-display_name-\"\"",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-party-display_name-\"  \"",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-party-party_type-\"INVALID\"",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-party-lifecycle-\"INVALID\"",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/accept-historical-null-party-display_name",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-historical-null-party-party_type",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-historical-null-party-lifecycle",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/preserve-partial-historical-party-without-inventing-fields",
+      "passed": true,
+      "durationMs": 4
+    },
+    {
+      "name": "backup/accept-party-PERSON-LEAD",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-party-PERSON-CUSTOMER",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-party-PERSON-ARCHIVED",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-party-ORGANIZATION-LEAD",
+      "passed": true,
+      "durationMs": 3
+    },
+    {
+      "name": "backup/accept-party-ORGANIZATION-CUSTOMER",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-party-ORGANIZATION-ARCHIVED",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-dashboard_widgets.dashboard_id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-static-fk-dashboard_widgets.source_report_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-parties.owner_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-parties.source_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-party_contacts.party_id",
+      "passed": true,
+      "durationMs": 3
+    },
+    {
+      "name": "backup/reject-static-fk-party_contacts.contact_party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-party_channels.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-party_addresses.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-party_tags.party_id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-static-fk-party_tags.tag_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-party_notes.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-party_notes.author_id",
+      "passed": true,
+      "durationMs": 6
+    },
+    {
+      "name": "backup/reject-static-fk-pipeline_stages.pipeline_id",
+      "passed": true,
+      "durationMs": 4
+    },
+    {
+      "name": "backup/reject-static-fk-opportunities.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-opportunities.pipeline_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-opportunities.stage_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-opportunities.owner_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-opportunity_parties.opportunity_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-opportunity_parties.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-activity_items.owner_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-activity_links.activity_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-interactions.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-interactions.opportunity_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-interactions.activity_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-activity_reminders.activity_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-quotes.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-quotes.opportunity_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-quote_items.quote_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-quote_items.catalog_item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-sales_orders.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-sales_orders.opportunity_id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-static-fk-sales_orders.source_quote_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-sale_items.sale_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-sale_items.catalog_item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-sales_documents.template_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-sales_documents.created_by",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-static-fk-catalog_categories.parent_category_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-catalog_items.category_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-price_list_items.price_list_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-price_list_items.catalog_item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-item_variants.item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-saved_queries.created_by",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-saved_reports.saved_query_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-report_exports.report_id",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-static-fk-report_schedules.report_id",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-static-fk-users.role_id",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-static-fk-field_values.definition_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-audit_events.actor_id",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-static-fk-projects.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-projects.opportunity_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-projects.budget_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-project_phases.project_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-project_tasks.project_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-project_tasks.phase_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-project_tasks.activity_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-project_milestones.project_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-project_deliverables.project_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-project_deliverables.milestone_id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-static-fk-contracts.party_id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-static-fk-contracts.project_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-contracts.opportunity_id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-static-fk-contract_parties.contract_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-contract_parties.party_id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-static-fk-contract_terms.contract_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-contract_revisions.contract_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-contract_renewals.contract_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-receivables.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-receivables.sale_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-receivables.contract_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-receivable_installments.receivable_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-receivable_payments.receivable_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-receivable_payments.installment_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-payment_allocations.payment_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-payment_allocations.receivable_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-collection_followups.receivable_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-collection_followups.activity_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-expense_categories.parent_category_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-expenses.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-expenses.project_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-expenses.supplier_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-expenses.category_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-expense_items.expense_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-expense_items.catalog_item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-expense_attachments.expense_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-form_submissions.form_definition_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-form_submissions.source_party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-form_answers.submission_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-form_answers.field_definition_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-form_rules.form_definition_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-budgets.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-budgets.project_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-budgets.opportunity_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-budget_lines.budget_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-budget_lines.catalog_item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-budget_versions.budget_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-budget_versions.created_by",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-budget_actuals.budget_line_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-budget_actuals.expense_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-inventory_items.catalog_item_id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-static-fk-inventory_lots.inventory_item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-inventory_lots.supplier_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-inventory_movements.inventory_item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-inventory_movements.lot_id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-static-fk-inventory_movements.warehouse_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-stock_counts.warehouse_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-stock_count_lines.stock_count_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-stock_count_lines.inventory_item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-suppliers.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-purchase_orders.supplier_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-purchase_order_lines.purchase_order_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-purchase_order_lines.catalog_item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-supplier_contacts.supplier_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-supplier_contacts.party_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-supplier_prices.supplier_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-static-fk-supplier_prices.catalog_item_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/all-115-declared-static-fks-exercised",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/reject-invalid-fk-value-\"\"",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-invalid-fk-value-\"  \"",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-invalid-fk-value-12",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-membership-opportunities.stage_id",
+      "passed": true,
+      "durationMs": 4
+    },
+    {
+      "name": "backup/reject-membership-project_tasks.phase_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-membership-project_deliverables.milestone_id",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-membership-receivable_payments.installment_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-membership-inventory_movements.lot_id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/accept-polymorphic-activity_links",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-polymorphic-activity_links-unknown-entity",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-activity_links-missing-target",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-activity_links-missing-id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-activity_links-missing-entity",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-activity_links-blank-id",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "backup/accept-polymorphic-sales_documents",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-sales_documents-unknown-entity",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-sales_documents-missing-target",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-sales_documents-missing-id",
+      "passed": true,
+      "durationMs": 3
+    },
+    {
+      "name": "backup/reject-polymorphic-sales_documents-missing-entity",
+      "passed": true,
+      "durationMs": 3
+    },
+    {
+      "name": "backup/reject-polymorphic-sales_documents-blank-id",
+      "passed": true,
+      "durationMs": 3
+    },
+    {
+      "name": "backup/accept-polymorphic-inventory_movements",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-inventory_movements-unknown-entity",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-inventory_movements-missing-target",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-inventory_movements-missing-id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-inventory_movements-missing-entity",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-polymorphic-inventory_movements-blank-id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-field-values-missing-record",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-field-values-unknown-definition-entity",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-field-values-blank-record-id",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-field-values-missing-definition",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/preserve-legacy-numeric-fields-and-unknown-metadata",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "backup/reject-nonfinite-legacy-number-NaN",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-nonfinite-legacy-number-Infinity",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/reject-nonfinite-legacy-number--Infinity",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "backup/audit-history-identifiers-are-preserved",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "integrity/party-core-and-partial-validation",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "integrity/no-execution-of-polymorphic-entity-text",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"plain\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"He said \\\"hola\\\"\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"a,b\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"a\\r\\nb\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-null",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-123",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"=SUM(A1)\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"+1\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"-1\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"@SUM(A1)\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"  =1\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"﻿=1\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"\\tplain\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"\\rplain\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/escape-\"\\nplain\"",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "csv/relationship-export-bom-header-columns-and-formula-safety",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-boolean?-{\"type\":\"select-one\",\"value\":\"\"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-boolean?-{\"type\":\"select-one\",\"value\":\"true\"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-boolean?-{\"type\":\"select-one\",\"value\":\"false\"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-boolean-{\"type\":\"checkbox\",\"checked\":true}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-boolean-{\"type\":\"checkbox\",\"checked\":false}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-integer?-{\"value\":\"  \"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-integer-{\"value\":\"0\"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-integer?-{\"value\":\" -23 \"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-integer?-{\"value\":\"9007199254740991\"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-integer?-{\"value\":\"-9007199254740991\"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-string?-{\"value\":\"  hola  \"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-string?-{\"value\":\"  \"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-string?-{\"value\":\"false\"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-uuid-{\"value\":\" qa-id \"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/parse-datetime-{\"value\":\" 2026-10-14T12:00:00.000Z \"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/reject-unsafe-integer-1.5",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/reject-unsafe-integer-NaN",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/reject-unsafe-integer-Infinity",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/reject-unsafe-integer-9007199254740992",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/reject-unsafe-integer--9007199254740992",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "module/area-map-eight-areas-37-distinct-form-entities",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/native-preserves-utf8-bytes-respaldo.json",
+      "passed": true,
+      "durationMs": 2
+    },
+    {
+      "name": "download/native-preserves-utf8-bytes-relaciones.csv",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "download/native-waits-for-matching-request-result",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/native-cancel-cleans-listener-and-allows-next-save",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "download/native-write-error-propagates-and-allows-next-save",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "download/native-rejects-second-save-without-disrupting-first",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/native-bridge-throw-cleans-listener-and-pending-state",
+      "passed": true,
+      "durationMs": 1
+    },
+    {
+      "name": "download/native-rejects-reader-{\"readFailure\":\"error\"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/native-rejects-reader-{\"readFailure\":\"abort\"}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/native-rejects-reader-{\"malformed\":true}",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/native-rejects-over-32mib-before-reading",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/native-rejects-unsupported-format-text/html-backup.html",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/native-rejects-unsupported-format-application/json-backup.csv",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/native-rejects-unsupported-format-text/csv-backup.json",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/browser-ignores-bridge-at-untrusted-origin-https://example.com",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/browser-ignores-bridge-at-untrusted-origin-http://appassets.androidplatform.net",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/browser-ignores-bridge-at-untrusted-origin-https://appassets.androidplatform.net.evil.example",
+      "passed": true,
+      "durationMs": 0
+    },
+    {
+      "name": "download/browser-fallback-without-native-bridge",
+      "passed": true,
+      "durationMs": 0
+    }
+  ]
+}

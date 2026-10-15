@@ -1,0 +1,713 @@
+{
+  "version": "0.4",
+  "entities": [
+    {
+      "entity": "projects",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "name": "string?",
+        "party_id": "string?",
+        "opportunity_id": "string?",
+        "status": "string?",
+        "start_date": "string?",
+        "target_date": "string?",
+        "budget_id": "string?"
+      },
+      "references": {
+        "party_id": "parties.id",
+        "opportunity_id": "opportunities.id",
+        "budget_id": "budgets.id"
+      }
+    },
+    {
+      "entity": "project_phases",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "project_id": "string?",
+        "name": "string?",
+        "sort_order": "string?",
+        "planned_start": "string?",
+        "planned_end": "string?",
+        "status": "string?"
+      },
+      "references": {
+        "project_id": "projects.id"
+      }
+    },
+    {
+      "entity": "project_tasks",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "project_id": "string?",
+        "phase_id": "string?",
+        "activity_id": "string?",
+        "name": "string?",
+        "status": "string?",
+        "due_at": "string?"
+      },
+      "references": {
+        "project_id": "projects.id",
+        "phase_id": "project_phases.id",
+        "activity_id": "activity_items.id"
+      }
+    },
+    {
+      "entity": "project_milestones",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "project_id": "string?",
+        "name": "string?",
+        "due_at": "string?",
+        "status": "string?",
+        "completed_at": "string?"
+      },
+      "references": {
+        "project_id": "projects.id"
+      }
+    },
+    {
+      "entity": "project_deliverables",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "project_id": "string?",
+        "milestone_id": "string?",
+        "name": "string?",
+        "description": "string?",
+        "status": "string?",
+        "delivered_at": "string?"
+      },
+      "references": {
+        "project_id": "projects.id",
+        "milestone_id": "project_milestones.id"
+      }
+    },
+    {
+      "entity": "contracts",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "party_id": "string?",
+        "project_id": "string?",
+        "opportunity_id": "string?",
+        "contract_number": "string?",
+        "title": "string?",
+        "status": "string?",
+        "start_date": "string?",
+        "end_date": "string?"
+      },
+      "references": {
+        "party_id": "parties.id",
+        "project_id": "projects.id",
+        "opportunity_id": "opportunities.id"
+      }
+    },
+    {
+      "entity": "contract_parties",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "contract_id": "string?",
+        "party_id": "string?",
+        "role": "string?"
+      },
+      "references": {
+        "contract_id": "contracts.id",
+        "party_id": "parties.id"
+      }
+    },
+    {
+      "entity": "contract_terms",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "contract_id": "string?",
+        "clause_number": "string?",
+        "title": "string?",
+        "content": "string?",
+        "sort_order": "string?"
+      },
+      "references": {
+        "contract_id": "contracts.id"
+      }
+    },
+    {
+      "entity": "contract_revisions",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "contract_id": "string?",
+        "revision_number": "string?",
+        "snapshot_json": "string?",
+        "status": "string?"
+      },
+      "references": {
+        "contract_id": "contracts.id"
+      }
+    },
+    {
+      "entity": "contract_renewals",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "contract_id": "string?",
+        "reminder_at": "string?",
+        "renewal_date": "string?",
+        "status": "string?"
+      },
+      "references": {
+        "contract_id": "contracts.id"
+      }
+    },
+    {
+      "entity": "receivables",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "party_id": "string?",
+        "sale_id": "string?",
+        "contract_id": "string?",
+        "amount_minor": "integer?",
+        "balance_minor": "integer?",
+        "currency": "string?",
+        "due_date": "string?",
+        "status": "string?"
+      },
+      "references": {
+        "party_id": "parties.id",
+        "sale_id": "sales_orders.id",
+        "contract_id": "contracts.id"
+      }
+    },
+    {
+      "entity": "receivable_installments",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "receivable_id": "string?",
+        "due_date": "string?",
+        "amount_minor": "integer?",
+        "status": "string?"
+      },
+      "references": {
+        "receivable_id": "receivables.id"
+      }
+    },
+    {
+      "entity": "receivable_payments",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "receivable_id": "string?",
+        "installment_id": "string?",
+        "paid_at": "string?",
+        "amount_minor": "integer?",
+        "payment_method": "string?",
+        "reference": "string?"
+      },
+      "references": {
+        "receivable_id": "receivables.id",
+        "installment_id": "receivable_installments.id"
+      }
+    },
+    {
+      "entity": "payment_allocations",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "payment_id": "string?",
+        "receivable_id": "string?",
+        "amount_minor": "integer?"
+      },
+      "references": {
+        "payment_id": "receivable_payments.id",
+        "receivable_id": "receivables.id"
+      }
+    },
+    {
+      "entity": "collection_followups",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "receivable_id": "string?",
+        "activity_id": "string?",
+        "followup_at": "string?",
+        "note": "string?",
+        "status": "string?"
+      },
+      "references": {
+        "receivable_id": "receivables.id",
+        "activity_id": "activity_items.id"
+      }
+    },
+    {
+      "entity": "expense_categories",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "name": "string?",
+        "parent_category_id": "string?",
+        "active": "boolean?"
+      },
+      "references": {
+        "parent_category_id": "expense_categories.id"
+      }
+    },
+    {
+      "entity": "expenses",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "party_id": "string?",
+        "project_id": "string?",
+        "supplier_id": "string?",
+        "category_id": "string?",
+        "amount_minor": "integer?",
+        "currency": "string?",
+        "incurred_at": "string?",
+        "description": "string?"
+      },
+      "references": {
+        "party_id": "parties.id",
+        "project_id": "projects.id",
+        "supplier_id": "suppliers.id",
+        "category_id": "expense_categories.id"
+      }
+    },
+    {
+      "entity": "expense_items",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "expense_id": "string?",
+        "catalog_item_id": "string?",
+        "description": "string?",
+        "quantity": "string?",
+        "unit_cost_minor": "integer?",
+        "total_minor": "integer?"
+      },
+      "references": {
+        "expense_id": "expenses.id",
+        "catalog_item_id": "catalog_items.id"
+      }
+    },
+    {
+      "entity": "expense_attachments",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "expense_id": "string?",
+        "file_name": "string?",
+        "file_type": "string?",
+        "file_reference": "string?"
+      },
+      "references": {
+        "expense_id": "expenses.id"
+      }
+    },
+    {
+      "entity": "form_submissions",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "form_definition_id": "string?",
+        "submitted_at": "string?",
+        "source_party_id": "string?",
+        "status": "string?"
+      },
+      "references": {
+        "form_definition_id": "form_definitions.id",
+        "source_party_id": "parties.id"
+      }
+    },
+    {
+      "entity": "form_answers",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "submission_id": "string?",
+        "field_definition_id": "string?",
+        "field_key": "string?",
+        "answer_json": "string?"
+      },
+      "references": {
+        "submission_id": "form_submissions.id",
+        "field_definition_id": "field_definitions.id"
+      }
+    },
+    {
+      "entity": "form_rules",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "form_definition_id": "string?",
+        "condition_json": "string?",
+        "action_json": "string?",
+        "position": "string?"
+      },
+      "references": {
+        "form_definition_id": "form_definitions.id"
+      }
+    },
+    {
+      "entity": "budgets",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "party_id": "string?",
+        "project_id": "string?",
+        "opportunity_id": "string?",
+        "name": "string?",
+        "currency": "string?",
+        "total_minor": "integer?",
+        "status": "string?"
+      },
+      "references": {
+        "party_id": "parties.id",
+        "project_id": "projects.id",
+        "opportunity_id": "opportunities.id"
+      }
+    },
+    {
+      "entity": "budget_lines",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "budget_id": "string?",
+        "catalog_item_id": "string?",
+        "description": "string?",
+        "quantity": "string?",
+        "unit_price_minor": "integer?",
+        "total_minor": "integer?"
+      },
+      "references": {
+        "budget_id": "budgets.id",
+        "catalog_item_id": "catalog_items.id"
+      }
+    },
+    {
+      "entity": "budget_versions",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "budget_id": "string?",
+        "version_number": "string?",
+        "snapshot_json": "string?",
+        "created_by": "string?"
+      },
+      "references": {
+        "budget_id": "budgets.id",
+        "created_by": "users.id"
+      }
+    },
+    {
+      "entity": "budget_actuals",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "budget_line_id": "string?",
+        "expense_id": "string?",
+        "amount_minor": "integer?"
+      },
+      "references": {
+        "budget_line_id": "budget_lines.id",
+        "expense_id": "expenses.id"
+      }
+    },
+    {
+      "entity": "warehouses",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "name": "string?",
+        "location": "string?",
+        "active": "boolean?"
+      },
+      "references": {}
+    },
+    {
+      "entity": "inventory_items",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "catalog_item_id": "string?",
+        "sku": "string?",
+        "track_stock": "boolean?",
+        "active": "boolean?"
+      },
+      "references": {
+        "catalog_item_id": "catalog_items.id"
+      }
+    },
+    {
+      "entity": "inventory_lots",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "inventory_item_id": "string?",
+        "supplier_id": "string?",
+        "lot_code": "string?",
+        "acquired_at": "string?",
+        "expiry_at": "string?"
+      },
+      "references": {
+        "inventory_item_id": "inventory_items.id",
+        "supplier_id": "suppliers.id"
+      }
+    },
+    {
+      "entity": "inventory_movements",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "inventory_item_id": "string?",
+        "lot_id": "string?",
+        "warehouse_id": "string?",
+        "movement_type": "string?",
+        "quantity": "string?",
+        "reference_type": "string?",
+        "reference_id": "string?"
+      },
+      "references": {
+        "inventory_item_id": "inventory_items.id",
+        "lot_id": "inventory_lots.id",
+        "warehouse_id": "warehouses.id"
+      }
+    },
+    {
+      "entity": "stock_counts",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "warehouse_id": "string?",
+        "counted_at": "string?",
+        "status": "string?"
+      },
+      "references": {
+        "warehouse_id": "warehouses.id"
+      }
+    },
+    {
+      "entity": "stock_count_lines",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "stock_count_id": "string?",
+        "inventory_item_id": "string?",
+        "expected_quantity": "string?",
+        "counted_quantity": "string?"
+      },
+      "references": {
+        "stock_count_id": "stock_counts.id",
+        "inventory_item_id": "inventory_items.id"
+      }
+    },
+    {
+      "entity": "suppliers",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "party_id": "string?",
+        "supplier_code": "string?",
+        "status": "string?",
+        "terms": "string?",
+        "notes": "string?"
+      },
+      "references": {
+        "party_id": "parties.id"
+      }
+    },
+    {
+      "entity": "purchase_orders",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "supplier_id": "string?",
+        "order_number": "string?",
+        "ordered_at": "string?",
+        "status": "string?",
+        "currency": "string?",
+        "total_minor": "integer?"
+      },
+      "references": {
+        "supplier_id": "suppliers.id"
+      }
+    },
+    {
+      "entity": "purchase_order_lines",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "purchase_order_id": "string?",
+        "catalog_item_id": "string?",
+        "description": "string?",
+        "quantity": "string?",
+        "unit_price_minor": "integer?",
+        "total_minor": "integer?"
+      },
+      "references": {
+        "purchase_order_id": "purchase_orders.id",
+        "catalog_item_id": "catalog_items.id"
+      }
+    },
+    {
+      "entity": "supplier_contacts",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "supplier_id": "string?",
+        "party_id": "string?",
+        "role": "string?"
+      },
+      "references": {
+        "supplier_id": "suppliers.id",
+        "party_id": "parties.id"
+      }
+    },
+    {
+      "entity": "supplier_prices",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "supplier_id": "string?",
+        "catalog_item_id": "string?",
+        "price_minor": "integer?",
+        "currency": "string?",
+        "valid_from": "string?"
+      },
+      "references": {
+        "supplier_id": "suppliers.id",
+        "catalog_item_id": "catalog_items.id"
+      }
+    },
+    {
+      "entity": "module_projects",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "label": "string?",
+        "enabled": "boolean?"
+      },
+      "references": {}
+    },
+    {
+      "entity": "module_contracts",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "label": "string?",
+        "enabled": "boolean?"
+      },
+      "references": {}
+    },
+    {
+      "entity": "module_receivables",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "label": "string?",
+        "enabled": "boolean?"
+      },
+      "references": {}
+    },
+    {
+      "entity": "module_expenses",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "label": "string?",
+        "enabled": "boolean?"
+      },
+      "references": {}
+    },
+    {
+      "entity": "module_forms",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "label": "string?",
+        "enabled": "boolean?"
+      },
+      "references": {}
+    },
+    {
+      "entity": "module_budgets",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "label": "string?",
+        "enabled": "boolean?"
+      },
+      "references": {}
+    },
+    {
+      "entity": "module_inventory",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "label": "string?",
+        "enabled": "boolean?"
+      },
+      "references": {}
+    },
+    {
+      "entity": "module_suppliers",
+      "fields": {
+        "id": "uuid",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "label": "string?",
+        "enabled": "boolean?"
+      },
+      "references": {}
+    }
+  ]
+}

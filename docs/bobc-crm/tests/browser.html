@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><base href="../"><title>BOBC CRM browser QA</title></head>
+<body><p>Pruebas de IndexedDB: ejecutar con run_browser_tests.py.</p>
+<script type="module">
+if (['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname)) {
+  await import('./tests/browser-tests.js');
+} else {
+  document.body.textContent = 'Pruebas deshabilitadas: sólo se ejecutan en localhost con un navegador temporal.';
+}
+</script></body></html>

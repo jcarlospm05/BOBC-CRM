@@ -1,0 +1,13 @@
+android/.gradle/
+android/**/build/
+android/local.properties
+.tools/
+.build-tools/
+.private/
+dist/
+*.keystore
+*.jks
+.env
+__pycache__/
+*.pyc
+.DS_Store

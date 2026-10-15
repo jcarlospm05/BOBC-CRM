@@ -1,0 +1,51 @@
+plugins {
+    id 'com.android.application'
+}
+
+def generatedWebAssets = layout.buildDirectory.dir('generated/bobc/assets')
+
+tasks.register('bundleCrmAssets', Sync) {
+    from rootProject.file('../docs/bobc-crm')
+    into generatedWebAssets.map { it.dir('crm') }
+    include 'index.html', 'css/**/*.css', 'data/**/*.json', 'js/**/*.js'
+    exclude '**/tests/**', '**/results/**'
+}
+
+android {
+    namespace 'com.bobc.crm'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+
+    defaultConfig {
+        applicationId 'com.bobc.crm'
+        minSdk 26
+        targetSdk 35
+        versionCode 401
+        versionName '0.4.1'
+    }
+
+    sourceSets {
+        main.assets.srcDir generatedWebAssets
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildTypes {
+        debug {
+            // Same application ID as release so data stays available across updates.
+            debuggable true
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            // Production signing belongs in the build environment, never in Git.
+        }
+    }
+}
+
+tasks.named('preBuild').configure {
+    dependsOn tasks.named('bundleCrmAssets')
+}

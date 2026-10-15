@@ -1,0 +1,31 @@
+{
+  "sourceCommit": "309278c9081dcf3aef672c7128f862f46555394b",
+  "description": "Final delivered file hashes; unit and browser scope are stated separately in QA-REPORT.md",
+  "files": {
+    "docs/bobc-crm/AGENTS.md": "a8f97edf2e4e8959d37977f7ba596df702565b42ad9697e4ca721fd833c56397",
+    "docs/bobc-crm/BOBC_CRM_DATASHEET_CODEX_v0.4.md": "905f93b9b311d5be5739530037d5e4e45edbfaa4b70ff50845bdd72f8797e672",
+    "docs/bobc-crm/QA-REPORT.md": "d8f4f692fe7337abad74cd0d5e5d0c153becd7bf81ce79a74363626cb59b7292",
+    "docs/bobc-crm/README.md": "9d218ae6c6cc706ee7b12ae81e5fb463871720916c6e3b770a3f13fb6e251201",
+    "docs/bobc-crm/css/theme.css": "f0ff98fe52526c0540f6a894426c360e16012683a5ffa8bf19a61ecc42799e90",
+    "docs/bobc-crm/data/schema-extension-v2.json": "34cc7c0eb3e647a8dca5564c1893fa3f1e5bf578716c33963370d6048a5af510",
+    "docs/bobc-crm/data/schema.json": "9b33dcb5398ce82cdd0afcb3f60aee836b2689669dc1c4f0fde182a20e386246",
+    "docs/bobc-crm/index.html": "2dedba60e47e787bc0040af1cd8e6d145125ad43a6acb1bdc189296907dbe053",
+    "docs/bobc-crm/js/app.js": "8d14c34dc04c5e25ca4b19b1e001212a4c2213aeb27280e3db01f668eb634209",
+    "docs/bobc-crm/js/core/backup-validation.js": "72f004c3cb4c8f69e1e8eaef3eb7816ecf1faeaa1c1aebdcb6d9979af997da3c",
+    "docs/bobc-crm/js/core/backup.js": "b019f75796a2f34f8b25b34134e6bd38faa91e6a5f25768f0176c4e5b49489c6",
+    "docs/bobc-crm/js/core/csv.js": "595c11afab12556cd3e9888d65433bea57bedb00de2a1a1bb01368ce48ec4763",
+    "docs/bobc-crm/js/core/idb.js": "56134a46a6ce544f0b6e79b3575d7427ab963a509de3197b9c5abf5cb9e173b6",
+    "docs/bobc-crm/js/core/integrity.js": "5584be7a700e963005af4468918b00f6fe98122b8aab1cdf4308bcafd5ddc377",
+    "docs/bobc-crm/js/core/repository.js": "c27af0c3be8a52f1235914a9e53d3778506f8cb3b5d7b34f2222a12c42e4b4c5",
+    "docs/bobc-crm/js/core/schema.js": "77fce0680fe2210d1876b225d6f4e4bf0cead210d329c7643b677398d6d0d742",
+    "docs/bobc-crm/js/modules/module-manager.js": "987a7a8898ebcc80e7990a736eed6dc791d1117adc2a53ff676e35fe6ddc9eff",
+    "docs/bobc-crm/js/modules/relationships/party-service.js": "affb4fe24123c0f9f169859dfbcdfaec0ea0a57826e10cfd70b50e3f325f91cd",
+    "docs/bobc-crm/tests/README.md": "807f027fdcfb0ed372c4b4001cb27c911daf1866ef1eb3551437cf1cf3e03ec5",
+    "docs/bobc-crm/tests/browser-tests.js": "af3f22f1e381e4346b49e620c9f36ac43ad4b1400f39156d799af47768a00da0",
+    "docs/bobc-crm/tests/browser.html": "b41fbe2af6634f2286485e7e31cc142f4dc285337865ddea2f2199a9148323b7",
+    "docs/bobc-crm/tests/node-tests.mjs": "e651e574654304a4b05f1f97ab78a53b61e35658e20fe91dea80d5fe7f9c35ed",
+    "docs/bobc-crm/tests/results/browser-qa.json": "a3a74b5c4a5ae3b85e5e79922145b2ddae4a6605c15f3285f6247f358d530ec9",
+    "docs/bobc-crm/tests/results/node-qa.json": "bae3dd702942691397ef011dffe6bba5aa46f8d3ad2632678aee55723c437a11",
+    "docs/bobc-crm/tests/run_browser_tests.py": "0abf6e79690e072b8b5501daa464ebf2b2ff8920f0cd1e22b906c44f00b08e30"
+  }
+}

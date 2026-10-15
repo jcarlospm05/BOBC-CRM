@@ -1,0 +1,101 @@
+name: BOBC CRM - pruebas y APK independiente
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/bobc-crm/**'
+      - 'android/**'
+      - 'scripts/**'
+      - '.github/workflows/build-crm.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  units:
+    name: Validaciones de JavaScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Pruebas unitarias
+        run: |
+          mkdir -p dist
+          node docs/bobc-crm/tests/node-tests.mjs --json dist/node-qa.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BOBC-CRM-unit-QA
+          path: dist/node-qa.json
+          if-no-files-found: error
+
+  browser:
+    name: Chromium e IndexedDB
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar Playwright y Chromium
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Pruebas de navegador con base desechable
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+          from playwright.sync_api import sync_playwright
+          Path('dist').mkdir(exist_ok=True)
+          with sync_playwright() as playwright:
+              executable = playwright.chromium.executable_path
+          subprocess.run([
+              'python', 'docs/bobc-crm/tests/run_browser_tests.py',
+              '--chromium', executable, '--skip-public',
+              '--json', 'dist/browser-qa.json'
+          ], check=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BOBC-CRM-browser-QA
+          path: dist/browser-qa.json
+          if-no-files-found: warn
+
+  apk:
+    name: Compilar APK de pruebas
+    needs: units
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Preparar SDK Android
+        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Compilar, analizar y comprobar firma
+        run: bash scripts/build-apk.sh
+      - name: Identificar el código compilado
+        env:
+          BOBC_SOURCE_SHA: ${{ github.sha }}
+        run: |
+          printf 'BOBC CRM 0.4.1 - APK de pruebas\nCommit: %s\n' "$BOBC_SOURCE_SHA" > dist/BUILD-INFO.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BOBC-CRM-0.4.1-APK-pruebas
+          path: |
+            dist/*.apk
+            dist/*.sha256
+            dist/BUILD-INFO.txt
+          if-no-files-found: error
+          retention-days: 30
